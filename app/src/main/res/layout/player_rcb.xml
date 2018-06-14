@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/content_padding"
+    android:paddingRight="@dimen/content_padding"
+    android:paddingTop="@dimen/content_padding"
+    android:paddingBottom="@dimen/content_padding"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:selectableItemBackground">
+
+    <android.support.v7.widget.CardView
+        android:layout_gravity="center_horizontal"
+        app:cardElevation="0dp"
+        app:contentPadding="@dimen/content_padding"
+        app:contentPaddingTop="@dimen/dimen_40dp"
+        app:cardCornerRadius="@dimen/corner_radius"
+        app:cardBackgroundColor="@color/colorTeamRCB"
+        android:layout_marginTop="@dimen/dimen_80dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <!--rgba(255,255,255,0.5)-->
+            <TextView
+                android:singleLine="false"
+                android:maxLines="2"
+                android:layout_weight="1"
+                android:id="@+id/playerName"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_gravity="center"
+                android:textSize="@dimen/player_name_textsize"
+                android:textColor="@android:color/white"
+                android:text="@string/player_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/runs"
+                android:textStyle="bold"
+                android:textAllCaps="true"
+                android:layout_gravity="center"
+                android:textSize="@dimen/player_name_textsize"
+                android:textColor="@android:color/white"
+                android:text="@string/runs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_gravity="center_horizontal"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/playerImage"
+        android:layout_width="@dimen/size_120"
+        android:layout_height="@dimen/size_120"
+        android:src="@drawable/player"
+        app:civ_fill_color="@color/colorTeamRCB"
+        app:civ_border_width="@dimen/corner_radius"
+        app:civ_border_color="@color/colorTeamRCB"/>
+
+</FrameLayout>

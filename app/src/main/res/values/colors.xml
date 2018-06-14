@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fdb913</color>
+    <color name="colorPrimaryDark">#db3e48</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorTeamCSK">#fdb913</color>
+    <color name="colorTeamRCB">#db3e48</color>
+</resources>
