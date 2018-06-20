@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".TeamSelectActivity">
     <LinearLayout
-        android:layout_marginLeft="8dp"
-        android:padding="8dp"
+        android:layout_margin="16dp"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -27,6 +26,9 @@
 
     <android.support.v7.widget.RecyclerView
         android:layout_weight="1"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/player_csk"
         android:id="@+id/recyclerViewCSK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -40,14 +42,12 @@
             android:id="@+id/teamCSK"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <include layout="@layout/member_csk"/>
 
         </LinearLayout>
     </HorizontalScrollView>
 
     <LinearLayout
-        android:layout_marginLeft="8dp"
-        android:padding="8dp"
+        android:layout_margin="16dp"
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -65,6 +65,9 @@
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_weight="1"
+        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+        android:orientation="horizontal"
+        tools:listitem="@layout/player_rcb"
         android:id="@+id/recyclerViewRCB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -78,7 +81,6 @@
             android:id="@+id/teamRCB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <include layout="@layout/member_rcb"/>
         </LinearLayout>
     </HorizontalScrollView>
 

@@ -10,7 +10,7 @@
     android:paddingBottom="@dimen/content_padding"
     android:clickable="true"
     android:focusable="true"
-    android:layout_gravity="center_vertical"
+    android:layout_gravity="center"
     android:background="?android:selectableItemBackground">
 
     <android.support.v7.widget.CardView
