@@ -24,14 +24,14 @@ public class TeamSelectActivity extends AppCompatActivity {
         recyclerViewCSK=findViewById(R.id.recyclerViewCSK);
         LinearLayoutManager linearLayoutManagerCSK=new LinearLayoutManager(this);
         linearLayoutManagerCSK.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerViewCSK.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
+//        recyclerViewCSK.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
         recyclerViewCSK.setLayoutManager(linearLayoutManagerCSK);
         recyclerViewCSK.setItemAnimator(new DefaultItemAnimator());
         ////////////////////////////////////////////////////
         recyclerViewRCB=findViewById(R.id.recyclerViewRCB);
         LinearLayoutManager linearLayoutManagerRCB=new LinearLayoutManager(this);
         linearLayoutManagerRCB.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerViewRCB.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
+//        recyclerViewRCB.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.HORIZONTAL));
         recyclerViewRCB.setLayoutManager(linearLayoutManagerRCB);
         recyclerViewRCB.setItemAnimator(new DefaultItemAnimator());
         String str[]=getResources().getStringArray(R.array.team_csk);

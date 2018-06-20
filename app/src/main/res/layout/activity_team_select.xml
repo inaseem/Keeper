@@ -6,17 +6,68 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".TeamSelectActivity">
+    <LinearLayout
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textStyle="bold"
+            android:text="Chennai Super Kings"
+            android:textColor="@color/colorTeamCSK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginTop="8dp"
+            android:background="@color/colorTeamCSK"
+            android:layout_width="50dp"
+            android:layout_height="4dp"/>
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_weight="1"
         android:id="@+id/recyclerViewCSK"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:padding="8dp"
+        android:orientation="horizontal"
+        android:id="@+id/teamCSK"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/member_csk"/>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="8dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textStyle="bold"
+            android:text="Royal Challengers Bangalore"
+            android:textColor="@color/colorTeamRCB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <View
+            android:layout_marginTop="8dp"
+            android:background="@color/colorTeamRCB"
+            android:layout_width="50dp"
+            android:layout_height="4dp"/>
+    </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:layout_weight="1"
         android:id="@+id/recyclerViewRCB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:padding="8dp"
+        android:orientation="horizontal"
+        android:id="@+id/teamRCB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/member_rcb"/>
+    </LinearLayout>
 
 </LinearLayout>

@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Thread thread=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,15 +15,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
+    protected void onStart(){
         super.onStart();
-        new Handler(this.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent=new Intent(MainActivity.this,TeamSelectActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        },1000);
+        if(thread==null) {
+            thread = new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                    }
+                    Intent intent = new Intent(MainActivity.this, TeamSelectActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            };
+            thread.start();
+        }
+//        new Handler(this.getMainLooper()).post(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        });
     }
 }

@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -44,8 +43,8 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         holder.playerName.setText(players.get(position).getName());
         Glide.with(context)
                 .load(players.get(position).getImage())
+                .asBitmap()
                 .placeholder(R.drawable.player)
-                .crossFade()
                 .into(holder.playerImage);
     }
 
