@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Keeper</string>
     <string name="player_name">Naseem Ali</string>
+    <string name="rcb">Royal Challengers Bangalore</string>
+    <string name="csk">Chennai Super Kings</string>
     <string name="runs">100</string>
     <string-array name="team_csk">
         <item name="Ambati_Rayudu">Ambati Rayudu # https://www.mykhel.com/thumb/240x100x225/cricket/players/0/4620.1521698291.jpg</item>
