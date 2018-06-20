@@ -58,43 +58,43 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
             public void onClick(View view) {
                 switch (type) {
                     case Constants.TYPE_CSK:
-                        if(teamLayout.getChildCount()<11) {
-                            boolean there = false;
-                            for (int i = 0; i < teamLayout.getChildCount(); ++i) {
-                                if (teamLayout.getChildAt(i) instanceof TextView)
-                                    if (((TextView) teamLayout.getChildAt(i)).getText().toString().equalsIgnoreCase(players.get(position).getName())) {
-                                        teamLayout.removeViewAt(i);
-                                        there = true;
-                                        break;
-                                    }
+                        boolean there=false;
+                        for(int i=0;i<teamLayout.getChildCount();++i){
+                            if(teamLayout.getChildAt(i) instanceof TextView)
+                            if(((TextView)teamLayout.getChildAt(i)).getText().toString().equalsIgnoreCase(players.get(position).getName())){
+                                teamLayout.removeViewAt(i);
+                                there=true;
+                                break;
                             }
-                            if (!there) {
+                        }
+                        if(!there){
+                            if(teamLayout.getChildCount()<11) {
                                 TextView textView = (TextView) LayoutInflater.from(context).inflate(R.layout.member_csk, teamLayout, false);
                                 textView.setText(players.get(position).getName());
                                 teamLayout.addView(textView);
+                            }else {
+                                Toast.makeText(context, "Playing 11 Have Already Been Selected", Toast.LENGTH_SHORT).show();
                             }
-                        }else {
-                            Toast.makeText(context, "Playing 11 Are Already Finalized", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case Constants.TYPE_RCB:
-                        if(teamLayout.getChildCount()<11) {
-                            boolean there2 = false;
-                            for (int i = 0; i < teamLayout.getChildCount(); ++i) {
-                                if (teamLayout.getChildAt(i) instanceof TextView)
-                                    if (((TextView) teamLayout.getChildAt(i)).getText().toString().equalsIgnoreCase(players.get(position).getName())) {
-                                        teamLayout.removeViewAt(i);
-                                        there2 = true;
-                                        break;
-                                    }
-                            }
-                            if (!there2) {
+                        boolean there2=false;
+                        for(int i=0;i<teamLayout.getChildCount();++i){
+                            if(teamLayout.getChildAt(i) instanceof TextView)
+                                if(((TextView)teamLayout.getChildAt(i)).getText().toString().equalsIgnoreCase(players.get(position).getName())){
+                                    teamLayout.removeViewAt(i);
+                                    there2=true;
+                                    break;
+                                }
+                        }
+                        if(!there2){
+                            if(teamLayout.getChildCount()<11) {
                                 TextView textView = (TextView) LayoutInflater.from(context).inflate(R.layout.member_rcb, teamLayout, false);
                                 textView.setText(players.get(position).getName());
                                 teamLayout.addView(textView);
+                            }else {
+                                Toast.makeText(context, "Playing 11 Have Already Been Selected", Toast.LENGTH_SHORT).show();
                             }
-                        }else {
-                            Toast.makeText(context, "Playing 11 Are Already Finalized", Toast.LENGTH_SHORT).show();
                         }
                         break;
                 }

@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".TeamSelectActivity">
     <LinearLayout
+        android:layout_marginLeft="8dp"
         android:padding="8dp"
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -30,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <HorizontalScrollView
+        android:scrollbars="none"
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -44,6 +46,7 @@
     </HorizontalScrollView>
 
     <LinearLayout
+        android:layout_marginLeft="8dp"
         android:padding="8dp"
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -66,6 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <HorizontalScrollView
+        android:scrollbars="none"
         android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
