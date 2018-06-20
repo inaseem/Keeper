@@ -14,6 +14,7 @@ import java.util.Arrays;
 public class TeamSelectActivity extends AppCompatActivity {
 
     private RecyclerView recyclerViewCSK,recyclerViewRCB;
+    private LinearLayout teamRCB,teamCSK;
     private TeamAdapter adapterCSK,adapterRCB;
     private ArrayList<Player> playersRCB=new ArrayList<>(),playersCSK=new ArrayList<>();
 
@@ -21,6 +22,8 @@ public class TeamSelectActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_select);
+        teamRCB=findViewById(R.id.teamRCB);
+        teamCSK=findViewById(R.id.teamCSK);
         recyclerViewCSK=findViewById(R.id.recyclerViewCSK);
         LinearLayoutManager linearLayoutManagerCSK=new LinearLayoutManager(this);
         linearLayoutManagerCSK.setOrientation(LinearLayoutManager.HORIZONTAL);
@@ -39,12 +42,14 @@ public class TeamSelectActivity extends AppCompatActivity {
             playersCSK.add(new Player(st.split("#")[0],st.split("#")[1].trim()));
         }
         adapterCSK=new TeamAdapter(this,playersCSK,Constants.TYPE_CSK);
+        adapterCSK.setTeamLayout(teamCSK);
         recyclerViewCSK.setAdapter(adapterCSK);
         str=getResources().getStringArray(R.array.team_rcb);
         for(String st:str){
             playersRCB.add(new Player(st.split("#")[0],st.split("#")[1].trim()));
         }
         adapterRCB=new TeamAdapter(this,playersRCB,Constants.TYPE_RCB);
+        adapterRCB.setTeamLayout(teamRCB);
         recyclerViewRCB.setAdapter(adapterRCB);
     }
 }

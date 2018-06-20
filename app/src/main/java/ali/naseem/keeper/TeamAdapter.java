@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -19,6 +21,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     private ArrayList<Player> players;
     private Context context;
     private int type;
+    private LinearLayout teamLayout;
 
     public TeamAdapter(Context context, ArrayList<Player> players, int type) {
         this.players = players;
@@ -38,6 +41,10 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
         return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.player_csk, parent, false));
     }
 
+    public void setTeamLayout(LinearLayout teamLayout) {
+        this.teamLayout = teamLayout;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.playerName.setText(players.get(position).getName());
@@ -46,6 +53,54 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
                 .asBitmap()
                 .placeholder(R.drawable.player)
                 .into(holder.playerImage);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switch (type) {
+                    case Constants.TYPE_CSK:
+                        if(teamLayout.getChildCount()<11) {
+                            boolean there = false;
+                            for (int i = 0; i < teamLayout.getChildCount(); ++i) {
+                                if (teamLayout.getChildAt(i) instanceof TextView)
+                                    if (((TextView) teamLayout.getChildAt(i)).getText().toString().equalsIgnoreCase(players.get(position).getName())) {
+                                        teamLayout.removeViewAt(i);
+                                        there = true;
+                                        break;
+                                    }
+                            }
+                            if (!there) {
+                                TextView textView = (TextView) LayoutInflater.from(context).inflate(R.layout.member_csk, teamLayout, false);
+                                textView.setText(players.get(position).getName());
+                                teamLayout.addView(textView);
+                            }
+                        }else {
+                            Toast.makeText(context, "Playing 11 Are Already Finalized", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                    case Constants.TYPE_RCB:
+                        if(teamLayout.getChildCount()<11) {
+                            boolean there2 = false;
+                            for (int i = 0; i < teamLayout.getChildCount(); ++i) {
+                                if (teamLayout.getChildAt(i) instanceof TextView)
+                                    if (((TextView) teamLayout.getChildAt(i)).getText().toString().equalsIgnoreCase(players.get(position).getName())) {
+                                        teamLayout.removeViewAt(i);
+                                        there2 = true;
+                                        break;
+                                    }
+                            }
+                            if (!there2) {
+                                TextView textView = (TextView) LayoutInflater.from(context).inflate(R.layout.member_rcb, teamLayout, false);
+                                textView.setText(players.get(position).getName());
+                                teamLayout.addView(textView);
+                            }
+                        }else {
+                            Toast.makeText(context, "Playing 11 Are Already Finalized", Toast.LENGTH_SHORT).show();
+                        }
+                        break;
+                }
+            }
+        });
+
     }
 
     @Override
@@ -56,10 +111,11 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView playerName;
         public CircleImageView playerImage;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            playerImage=itemView.findViewById(R.id.playerImage);
-            playerName=itemView.findViewById(R.id.playerName);
+            playerImage = itemView.findViewById(R.id.playerImage);
+            playerName = itemView.findViewById(R.id.playerName);
         }
     }
 }
