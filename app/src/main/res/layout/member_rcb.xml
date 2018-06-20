@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_rcb"
     android:padding="8dp"
+    android:layout_marginRight="8dp"
     android:text="Naseem Ali"
     android:textColor="@android:color/white"
     android:textSize="12sp"
