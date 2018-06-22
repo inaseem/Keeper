@@ -1,5 +1,6 @@
 package ali.naseem.keeper;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,17 +9,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
+import android.widget.TextView;
 
 public class GameActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private String RCB_PLAYERS=null,CSK_PLAYERS=null;
     private DrawerLayout drawer;
+    private int sel=-1;
+    private NavigationView navigationView, navigationView2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +26,8 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
         RCB_PLAYERS=intent.getStringExtra(Constants.PLAYERS_RCB);
         CSK_PLAYERS=intent.getStringExtra(Constants.PLAYERS_CSK);
         drawer=(DrawerLayout)findViewById(R.id.drawer);
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        NavigationView navigationView2 = (NavigationView) findViewById(R.id.nav_view2);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView2 = (NavigationView) findViewById(R.id.nav_view2);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView2.setNavigationItemSelectedListener(this);
         String rcb[]=RCB_PLAYERS.split(",");
@@ -37,7 +36,6 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
             navigationView.getMenu().getItem(i).setTitle(rcb[i]);
             navigationView2.getMenu().getItem(i).setTitle(csk[i]);
         }
-        Toast.makeText(this, RCB_PLAYERS, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -46,7 +44,11 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
             case R.id.player1:
 
         }
-        drawer.closeDrawer(GravityCompat.START);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else if(drawer.isDrawerOpen(GravityCompat.END)){
+            drawer.closeDrawer(GravityCompat.END);
+        }
         return true;
     }
 
@@ -54,6 +56,8 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if(drawer.isDrawerOpen(GravityCompat.END)){
+            drawer.closeDrawer(GravityCompat.END);
         } else {
             super.onBackPressed();
         }
@@ -68,14 +72,32 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
     public void toss(){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
 // ...Irrelevant code for customizing the buttons and title
-        AlertDialog alertDialog = dialogBuilder.create();
-        LayoutInflater inflater = this.getLayoutInflater();
-        alertDialog.setContentView(inflater.inflate(R.layout.toss_layout, null));
-        ImageView tossImageView=alertDialog.findViewById(R.id.tossImageView);
-//        Glide.with(this)
-//                .load(R.drawable.coin)
-//                .asGif()
-//                .into(tossImageView);
-        alertDialog.show();
+        dialogBuilder.setTitle("Which team to bat first?");
+        dialogBuilder.setSingleChoiceItems(new CharSequence[]{getResources().getString(R.string.rcb),getResources().getString(R.string.csk)},sel,new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialogInterface, int selected) {
+                sel=selected;
+            }
+        });
+        dialogBuilder.setPositiveButton("START MATCH", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int buttonId) {
+                if (sel!=-1){
+                    TextView textView1=((TextView)navigationView.getHeaderView(0).findViewById(R.id.teamName));
+                    TextView textView2=((TextView)navigationView2.getHeaderView(0).findViewById(R.id.teamName));
+                    switch (sel){
+                        case 0:
+                            textView1.setText(textView1.getText().toString().concat("(Batting)"));
+                            textView2.setText(textView2.getText().toString().concat("(Fielding)"));
+                            break;
+                        case 1: ;
+                            textView1.setText(textView1.getText().toString().concat("(Fielding)"));
+                            textView2.setText(textView2.getText().toString().concat("(Batting)"));
+                    }
+                }
+            }
+        });
+        dialogBuilder.setCancelable(false);
+        dialogBuilder.create().show();
     }
 }
