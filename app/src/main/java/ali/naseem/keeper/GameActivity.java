@@ -87,12 +87,12 @@ public class GameActivity extends AppCompatActivity implements NavigationView.On
                     TextView textView2=((TextView)navigationView2.getHeaderView(0).findViewById(R.id.teamName));
                     switch (sel){
                         case 0:
-                            textView1.setText(textView1.getText().toString().concat("(Batting)"));
-                            textView2.setText(textView2.getText().toString().concat("(Fielding)"));
+                            textView1.setText(getResources().getString(R.string.rcb).concat("(Batting)"));
+                            textView2.setText(getResources().getString(R.string.csk).concat("(Fielding)"));
                             break;
                         case 1: ;
-                            textView1.setText(textView1.getText().toString().concat("(Fielding)"));
-                            textView2.setText(textView2.getText().toString().concat("(Batting)"));
+                            textView1.setText(getResources().getString(R.string.rcb).concat("(Fielding)"));
+                            textView2.setText(getResources().getString(R.string.csk).concat("(Batting)"));
                     }
                 }
             }
