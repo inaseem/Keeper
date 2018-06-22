@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="@color/colorTeamRCB"
+    android:background="@color/colorTeamCSK"
     android:orientation="vertical"
     android:id="@+id/headerContainer"
     android:padding="@dimen/content_padding"
@@ -9,7 +9,7 @@
 
     <ImageView
         android:id="@+id/teamIcon"
-        android:src="@drawable/rcb"
+        android:src="@drawable/csk"
         android:scaleType="centerInside"
         android:layout_width="130dp"
         android:layout_height="130dp" />
@@ -17,7 +17,7 @@
         android:id="@+id/teamName"
         android:layout_marginTop="@dimen/content_padding"
         android:textStyle="bold"
-        android:text="@string/rcb"
+        android:text="@string/csk"
         android:textColor="@android:color/white"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
